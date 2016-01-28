@@ -1,0 +1,20 @@
+{
+  "name": "spotify-japanese-translate",
+  "version": "0.1.0",
+  "description": "for web ver. spotify japanese translate",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --progress --colors --watch"
+  },
+  "author": "jackypan1989@gmail.com",
+  "dependencies": {
+    "hepburn": "^1.0.0",
+    "jquery": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.3.26",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.3.13",
+    "webpack": "^1.12.9"
+  }
+}
