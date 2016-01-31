@@ -15,10 +15,13 @@ Chrome extension for japanese romaji translation in spotify web application for 
 2. 打開你的 Chrome ，點右上角選單
 3. 選設定，然後點左邊的擴充功能
 4. 把"開發人員模式"打勾
-5. 點選"載入未封裝擴充功能"，並選取剛剛的資料夾
+5. 點選"載入未封裝擴充功能"，並選取剛剛解壓好的資料夾
 6. 然後就可以開始用 spotify 看日文歌名囉
 
 Currently only support album and artist page.  
 目前支援專輯還有作者頁面的日文轉換
 
-author: jackypan1989@gmail.com
+If there is any error, just refresh the browser.  
+有翻譯不出來的情形或出現錯誤，請點重新整理。  
+
+Author: jackypan1989@gmail.com
