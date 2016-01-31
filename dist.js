@@ -44,12 +44,20 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
+	__webpack_require__(1);
+	module.exports = __webpack_require__(1);
+
+
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 	'use stricts';
 	
-	var hepburn = __webpack_require__(1);
+	var hepburn = __webpack_require__(2);
 	
-	var init = function init() {
+	var convert = function convert() {
 	  var pathname = window.location.pathname;
 	
 	  var iframeQS = undefined,
@@ -60,17 +68,19 @@
 	    tracksQS = '#album-tracks div.tl-highlight';
 	  } else {
 	    iframeQS = "iframe[id^='browse-app-spotify:app:artist']";
-	    tracksQS = '#toplist-row div.tl-highlight';
+	    tracksQS = '#overview div.tl-highlight';
 	  }
 	
+	  if (!document.querySelector(iframeQS)) return;
 	  var iframe = document.querySelector(iframeQS).contentWindow.document;
 	
 	  var tracks = iframe.querySelectorAll(tracksQS);
 	
 	  for (var i = 0; i < tracks.length; i++) {
 	    var name = tracks[i].textContent.trim();
-	    var hiragana = hepburn.toHiragana(name);
-	    console.log(name, hiragana, /^[^a-zA-Z]+$/.test(hiragana));
+	    if (hepburn.containsHiragana(name)) continue;
+	    var hiragana = hepburn.toHiragana(hepburn.cleanRomaji(name));
+	    // console.log(name, hiragana, /^[^a-zA-Z]+$/.test(hiragana));
 	    if (/^[^a-zA-Z]+$/.test(hiragana)) {
 	      tracks[i].innerHTML = hiragana;
 	    }
@@ -78,22 +88,20 @@
 	};
 	
 	setTimeout(function () {
-	  return init();
-	}, 10000);
-	
-	// handle scroll
-	document.addEventListener('scroll', function () {
-	  return init();
-	});
+	  convert();
+	  setInterval(function () {
+	    convert();
+	  }, 1000);
+	}, 5000);
 
 /***/ },
-/* 1 */
+/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*jslint node: true */
 	'use strict';
 	
-	var bulkReplace = __webpack_require__(2);
+	var bulkReplace = __webpack_require__(3);
 	
 	var hiraganaMonographs = {
 	  "あ": "A", "い": "I", "う": "U", "え": "E", "お": "O",
@@ -367,7 +375,7 @@
 
 
 /***/ },
-/* 2 */
+/* 3 */
 /***/ function(module, exports) {
 
 	module.exports = function(str, regex, map) {

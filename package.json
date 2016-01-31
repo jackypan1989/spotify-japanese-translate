@@ -1,6 +1,6 @@
 {
   "name": "spotify-japanese-translate",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "for web ver. spotify japanese translate",
   "main": "index.js",
   "scripts": {
@@ -8,8 +8,7 @@
   },
   "author": "jackypan1989@gmail.com",
   "dependencies": {
-    "hepburn": "^1.0.0",
-    "jquery": "^2.2.0"
+    "hepburn": "^1.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.3.26",
